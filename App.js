@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, SafeAreaView, Dimensions } from "react-native";
+import WebView from "react-native-webview";
+import Root from "./src/navigation";
+
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      {/* <WebView source={{ uri: "https://mobile-winus.web.app/" }} /> */}
       <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Root />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 40,
   },
 });
